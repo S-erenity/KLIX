@@ -7,3 +7,4 @@ But be warned, the challenge doesn't end with clicking alone. Along the way, you
 Are you ready to embark on a clicking adventure like no other? Get your fingers ready and dive into the addictive world of KLIX!
 
 # Class Diagram
+*work in progress
