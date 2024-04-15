@@ -1,10 +1,13 @@
+from achievements import Achievements
 from Circle import Circle
+import time  # Import time module for tracking achievement display time
 
 circles = []
 game_started = False
 kliks = 0
 clicked = False
 circle_size = 200  
+achievements = Achievements()  # Ensure this is defined
 
 def setup():
     size(800, 600)
@@ -17,6 +20,10 @@ def draw():
         start_screen()
     else:
         game_screen()
+
+def mousePressed():
+    global game_started
+    game_started = True
 
 def start_screen():
     global clicked
@@ -61,6 +68,6 @@ def game_screen():
     textAlign(RIGHT)
     text("Kliks: " + str(kliks), width - 20, 30)
 
-def mousePressed():
-    global game_started
-    game_started = True
+    # Check and display achievement
+    achievements.check_achievement(kliks)  # This will set the achievement if kliks >= 200
+    achievements.display_achievement()  # This will display the achievement if it's set and within the time limit
