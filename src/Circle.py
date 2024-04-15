@@ -1,3 +1,5 @@
+import random
+
 class Circle:
     def __init__(self, x, y, diameter, speed, color):
         self.x = x
@@ -11,6 +13,5 @@ class Circle:
 
     def reset(self, width, height):
         if self.y > height:
-            self.y = random(-500, -50)
-            self.x = random(width)
-
+            self.y = random.uniform(-500, -50)
+            self.x = random.uniform(0, width)
