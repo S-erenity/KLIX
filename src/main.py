@@ -2,6 +2,9 @@ from Circle import Circle
 
 circles = []
 game_started = False
+kliks = 0
+clicked = False
+circle_size = 200  
 
 def setup():
     size(800, 600)
@@ -16,6 +19,7 @@ def draw():
         game_screen()
 
 def start_screen():
+    global clicked
     background(173, 216, 230)
     for circle in circles[:]:
         noStroke()
@@ -39,14 +43,25 @@ def start_screen():
     text("Click anywhere to start", width/2, height/2)
 
 def game_screen():
-    background(0)
+    global kliks, clicked, circle_size
+    background(173, 216, 230)
+    fill(100, 150, 200)  
+    ellipse(width/2, height/2, circle_size, circle_size)
+
+    if dist(width/2, height/2, mouseX, mouseY) < circle_size / 2 and mousePressed and not clicked:
+        kliks += 1
+        clicked = True
+        circle_size *= 1.1  
+    elif not mousePressed:
+        clicked = False
+        circle_size = 200  
+
     fill(255)
-    textSize(32)
-    textAlign(CENTER, CENTER)
-    text("This is the actual game screen!", width/2, height/2)
+    textSize(24)
+    textAlign(RIGHT)
+    text("Kliks: " + str(kliks), width - 20, 30)
 
 def mousePressed():
     global game_started
     game_started = True
-
 
