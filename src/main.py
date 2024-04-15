@@ -64,4 +64,3 @@ def game_screen():
 def mousePressed():
     global game_started
     game_started = True
-
